@@ -62,6 +62,12 @@ public class Morador {
 		this.rendaF = rendaF;
 	}
 
+	@Override
+	public String toString() {
+		return "Morador [cpf=" + cpf + ", nome=" + nome + ", rua=" + rua + ", cidade=" + cidade + ", bairro=" + bairro
+				+ ", estado=" + estado + ", tel=" + tel + ", numCasa=" + numCasa + "]";
+	}
+
 	public boolean setCpf(long cpf) {
 		long resto,multresult,nummult,soma=0,dig1,inicial,dig2;
 		boolean certo = false;

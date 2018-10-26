@@ -22,7 +22,19 @@ public class CDicionario {
 				ultima = ultima.prox;   
 			}
 		} 
-
+		
+		public void exclui(Object chave) {
+			boolean achou = false;   
+			if (primeira != ultima) {  
+				for (CCelulaDicionario aux = primeira; aux != null && !achou; aux = aux.prox) {       
+					achou = aux.prox.key.equals(chave);
+					if(achou) {
+						aux.prox = aux.prox.prox;
+					}
+				}
+			} 
+		}
+		
 		public Object recebeValor(Object chave){   
 			boolean achou = false;  
 			Object item = null;  
