@@ -1,10 +1,12 @@
 import java.util.Scanner;
+
 public class Menu {
 	static Scanner sc = new Scanner(System.in);
 	static CDicionario M1 = new CDicionario();
 	static CDicionario M2 = new CDicionario();
 	static CFila espera = new CFila();
 	static int m,n, qtd=1;
+
 	public static void Adiciona(long cpf, String nome, String rua,int numCasa, String cidade, String bairro, String estado, int qtdDep, int tel,
 			float rendaF){
 		Morador novo = new Morador(cpf,nome, rua, numCasa, cidade, bairro,estado, qtdDep, tel, rendaF);
@@ -35,10 +37,12 @@ public class Menu {
 			}
 		}
 	}
+	
 	public static void Parametros(int lista, int fila) {
 		m = lista;
 		n = fila + lista;
 	}
+	
 	public static void excluir(long cpf) {
 		int escolha;
 		do {
@@ -71,17 +75,15 @@ public class Menu {
 		if (pesquisado.equals(null)){
 			pesquisado = (Morador)M2.recebeValor(cpf);
 			if (pesquisado.equals(null)){
-				if(espera.contem(cpf)) // vai dar errado porque tem que comprar com cpf não com o que está na lista
+				if(espera.contemMorador(cpf))
 					System.out.println("O morador pesquisado está na lista de espera.");
 				else
 					System.out.println("O morador não está na lista de espera.");
 			}
-			if (!pesquisado.equals(null)){
-				System.out.println();
-
-			}
 		}
-
+		if (!pesquisado.equals(null)){
+			System.out.println(pesquisado + "Renda Familiar: " + pesquisado.getRendaF() + " Dependentes: " + pesquisado.getQtdDep());
+		}
 	}
 
 	public static void main(String[] args) {
@@ -99,11 +101,12 @@ public class Menu {
 			System.out.println("| [6] Sorteio                                                                  |");
 			System.out.println("| [7] Parâmetros                                                               |");
 			System.out.println("|                                                                              |");
-			System.out.println("| [0] Sair                                                                     |");
+			System.out.println("| [8] Sair                                                                     |");
 			System.out.println("--------------------------------------------------------------------------------");
 			escolha = sc.nextInt();
 			switch (escolha){
 			case 1:
+				// receber todos os parâmetros e passar para a função Adiciona
 				System.out.println("escolha 1");
 				break;
 			case 2:
@@ -113,19 +116,22 @@ public class Menu {
 				System.out.println("escolha 3");
 				break;
 			case 4:
+				// Receber o dado do cpf e enviar para a função Pesquisar
 				System.out.println("escolha 4");
 				break;
 			case 5:
+				// receber o cpf e enviar para excluir
 				System.out.println("escolha 5");
 				break;
 			case 6:
 				System.out.println("escolha 6");
 				break;                   
 			case 7:
+				// perguntar o limite total das listas e da fila e enviar para Parametros
 				System.out.println("escolha 7");
 				break;                  
 			}
-		}while(escolha != 0);
+		}while(escolha != 8);
 
 
 
@@ -157,5 +163,3 @@ public class Menu {
 	}
 
 }
-
-
