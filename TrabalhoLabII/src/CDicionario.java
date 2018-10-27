@@ -1,3 +1,4 @@
+import java.util.Random;
 
 public class CDicionario {
 		private CCelulaDicionario primeira, ultima; 
@@ -19,7 +20,7 @@ public class CDicionario {
 			} 
 			if (!achou) {    
 				ultima.prox = new CCelulaDicionario(chave,valor);   
-				ultima = ultima.prox;   
+				ultima = ultima.prox;
 			}
 		} 
 		
@@ -29,6 +30,7 @@ public class CDicionario {
 				for (CCelulaDicionario aux = primeira; aux != null && !achou; aux = aux.prox) {       
 					achou = aux.prox.key.equals(chave);
 					if(achou) {
+						CCelulaDicionario.indice--;
 						aux.prox = aux.prox.prox;
 					}
 				}
@@ -45,5 +47,18 @@ public class CDicionario {
 				}  
 			}     
 			return item; 
+		} 
+		
+		public Object retornaQualquer(){   
+			Object item = null;  
+			Random ret = new Random();
+			int escolha = ret.nextInt(CCelulaDicionario.indice);
+			CCelulaDicionario aux = primeira.prox;
+			if (primeira != ultima) {    
+				for (int i = 1;i >= escolha ; aux = aux.prox) 
+					i++;
+				item = aux.value;
+			}     
+			return item;
 		} 
 }

@@ -86,6 +86,21 @@ public class Menu {
 		}
 	}
 
+	public static void Sorteio() {
+		System.out.println("Escolha o número de moradias a serem sorteadas na primeira faixa: ");
+		int esc1 = sc.nextInt();
+		sc.nextLine();
+		System.out.println("Escolha o número de moradias a serem sorteadas na Faixa 2: ");
+		int esc2 = sc.nextInt();
+		sc.nextLine();
+		System.out.println("LISTAGEM DE MORADORES sorteados \n ================================ \n FAIXA 1");
+		for(int i = 1; i>= esc1; i++)
+			System.out.println(M1.retornaQualquer());
+		System.out.println("LISTAGEM DE MORADORES sorteados \n ================================ \n FAIXA 2");
+		for(int i = 1; i>= esc2; i++)
+			System.out.println(M2.retornaQualquer());
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int escolha;
