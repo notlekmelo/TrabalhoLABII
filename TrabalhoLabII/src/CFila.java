@@ -23,10 +23,8 @@ public class CFila {
    }
 
    public void mostra() {
-      System.out.print("[ ");
       for (CCelula c = frente.prox; c != null; c = c.prox)
-         System.out.print(c.item + " ");
-      System.out.println("] ");
+         System.out.print(((Morador)c.item).ListagemSimples());
    }
 
    // Insere um novo Item no fim da fila.

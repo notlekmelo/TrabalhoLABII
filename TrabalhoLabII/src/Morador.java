@@ -1,8 +1,8 @@
-
 public class Morador {
+
 	private long cpf;
-	private String nome, rua, cidade, bairro, estado;
-	private int  qtdDep,tel, numCasa;
+	private String nome, rua, cidade, bairro, estado, numCep, tel;
+	private int  qtdDep, numCasa, numAp;
 	private float rendaF;
 	
 	public long getCpf() {
@@ -33,20 +33,28 @@ public class Morador {
 		return qtdDep;
 	}
 
-	public int getTel() {
+	public String getTel() {
 		return tel;
+	}
+
+	public String getCep() {
+		return numCep;
 	}
 
 	public int getNumCasa() {
 		return numCasa;
 	}
 
+	public int getNumAp() {
+		return numAp;
+	}
+
 	public float getRendaF() {
 		return rendaF;
 	}
 	
-	public Morador(long cpf, String nome, String rua,int numCasa, String cidade, String bairro, String estado, int qtdDep, int tel,
-			float rendaF) {
+	public Morador(long cpf, String nome, String rua, int numCasa, String cidade, String bairro, String estado, int numAp, int qtdDep, String tel, String numCep,
+				   float rendaF) {
 		//if (setCpf(cpf)) {
 			this.cpf = cpf;
 		//}
@@ -57,14 +65,20 @@ public class Morador {
 		this.bairro = bairro;
 		this.estado = estado;
 		this.qtdDep = qtdDep;
+		this.numAp = numAp;
 		this.tel = tel;
+		this.numCasa = numCasa;
+		this.numCep = numCep;
 		this.rendaF = rendaF;
 	}
 
 	@Override
 	public String toString() {
-		return "Morador [cpf=" + cpf + ", nome=" + nome + ", rua=" + rua + ", cidade=" + cidade + ", bairro=" + bairro
-				+ ", estado=" + estado + ", tel=" + tel + ", numCasa=" + numCasa + "]";
+		return "CPF " + cpf + " Nome " + nome + "\nQtde. Dependentes " + qtdDep + " - Renda Familiar " + rendaF + " \nTelefone : " + tel + "\nRua " + rua + " "  + numCasa + ", AP " + numAp + " Bairro: " + bairro + "\nCodade: " + cidade + " Estado: " + estado +" CEP: " + numCep + "\n";
+	}
+
+	public String ListagemSimples() {
+		return "CPF " + cpf + " - Nome " + nome + " - Renda Familiar: " + rendaF + "\n";
 	}
 
 //	public boolean setCpf(long cpf) {

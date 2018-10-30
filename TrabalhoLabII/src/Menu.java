@@ -8,9 +8,9 @@ public class Menu {
 	static int m,n, qtd=1;
 
 	public static void CadastroMorador(){
-		String nome, rua, bairro, estado, cidade;
+		String nome, rua, bairro, estado, cidade, telefone, cep;
 		long cpf;
-		int qntd,numCasa, telefone;
+		int qntd,numCasa, numAp;
 		float renda;
 
 		System.out.println("|------------------------------------------------------------------------------|");
@@ -27,12 +27,14 @@ public class Menu {
 		renda = sc.nextFloat();
 		sc.nextLine();
 		System.out.print("|Digite o telefone de contato: ");
-		telefone = sc.nextInt();
-		sc.nextLine();
+		telefone = sc.nextLine();
 		System.out.print("|Digite sua Rua: ");
 		rua = sc.nextLine();
 		System.out.print("|Digite o numero na rua: ");
 		numCasa = sc.nextInt();
+		sc.nextLine();
+		System.out.print("|Digite o numero do apartamento: ");
+		numAp = sc.nextInt();
 		sc.nextLine();
 		System.out.print("|Digite a sua Cidade: ");
 		cidade = sc.nextLine();
@@ -40,14 +42,15 @@ public class Menu {
 		bairro = sc.nextLine();
 		System.out.print("|Digite o seu estado: ");
 		estado = sc.nextLine();
+		System.out.print("|Digite o seu CEP: ");
+		cep = sc.nextLine();
 		System.out.println("|------------------------------------------------------------------------------|");
 
-		Adiciona(cpf, nome, rua, numCasa, cidade, bairro, estado, qntd, telefone, renda);
+		Adiciona(cpf, nome, rua, numCasa, cidade, bairro, estado, numAp, qntd, telefone, cep, renda);
 	}
 
-	public static void Adiciona(long cpf, String nome, String rua,int numCasa, String cidade, String bairro, String estado, int qtdDep, int tel,
-			float rendaF){
-		Morador novo = new Morador(cpf,nome, rua, numCasa, cidade, bairro,estado, qtdDep, tel, rendaF);
+	public static void Adiciona(long cpf, String nome, String rua, int numCasa, String cidade, String bairro, String estado, int numAp, int qtdDep, String tel, String cep, float rendaF){
+		Morador novo = new Morador(cpf, nome, rua, numCasa, cidade, bairro, estado, numAp, qtdDep, tel, cep, rendaF);
 		if(rendaF <= 954.0) {
 			if(qtd <= m) {
 				M1.adiciona(cpf,novo);
@@ -164,11 +167,11 @@ public class Menu {
 				Listar();
 				break;
 			case 3:
-				System.out.println("escolha 3");
+				espera.mostra();
 				break;
 			case 4:
 				System.out.println("|------------------------------------------------------------------------------|");
-				System.out.println("|Digite o CPF do morador a ser pesquisado                                      |");
+				System.out.print("|Digite o CPF do morador a ser pesquisado: ");
 				long cpf = sc.nextLong();
 				sc.nextLine();
 				System.out.println("|------------------------------------------------------------------------------|");
@@ -176,7 +179,7 @@ public class Menu {
 				break;
 			case 5:
 				System.out.println("|------------------------------------------------------------------------------|");
-				System.out.println("|Digite o CPF do morador a ser excluído                                        |");
+				System.out.print("|Digite o CPF do morador a ser excluído: ");
 				cpf = sc.nextLong();
 				sc.nextLine();
 				System.out.println("|------------------------------------------------------------------------------|");
@@ -187,10 +190,10 @@ public class Menu {
 				break;                   
 			case 7:
 				System.out.println("|------------------------------------------------------------------------------|");
-				System.out.println("|Qual o limite total para as Faixas?                                           |");
+				System.out.print("|Qual o limite total para as Faixas?: ");
 				int m = sc.nextInt();
 				sc.nextLine();
-				System.out.println("|Qual o limite da lista de espera?                                             |");
+				System.out.print("|Qual o limite da lista de espera?: ");
 				int n = sc.nextInt();
 				sc.nextLine();
 				System.out.println("|------------------------------------------------------------------------------|");
@@ -214,15 +217,21 @@ public class Menu {
 			escolha = sc.nextInt();
 			switch (escolha){
 			case 1:
-				System.out.println("escolha 2.1");
+				M1.mostraSimples();
 				escolha = 0;
 				break;
 			case 2:
-				System.out.println("escolha 2.2");
+				M1.mostraCompleto();
 				escolha = 0;
 				break;
 			}
 		}while(escolha != 0);
+	}
+
+	private static void jump() {
+		for (int i = 0; i < 20; i++)
+			System.out.println();
+		System.out.println();
 	}
 
 }
