@@ -152,7 +152,7 @@ public class Menu {
 			System.out.println("| [6] Sorteio                                                                  |");
 			System.out.println("| [7] Parametros                                                               |");
 			System.out.println("|                                                                              |");
-			System.out.println("| [0] Sair                                                                     |");
+			System.out.println("| [8] Sair                                                                     |");
 			System.out.println("--------------------------------------------------------------------------------");
 			escolha = sc.nextInt();
 			switch (escolha){
@@ -184,7 +184,7 @@ public class Menu {
 				System.out.println("escolha 7");
 				break;                  
 			}
-		}while(escolha != 0);
+		}while(escolha != 8);
 		sc.close();
 	}
 

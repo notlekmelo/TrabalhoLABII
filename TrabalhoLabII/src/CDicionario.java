@@ -60,5 +60,12 @@ public class CDicionario {
 				item = aux.value;
 			}     
 			return item;
-		} 
+		}
+
+	public void mostra() {
+		System.out.print("[ ");
+		for (CCelulaDicionario c = primeira.prox; c != null; c = c.prox)
+			System.out.print(c.value + " ");
+		System.out.println("] ");
+	}
 }
