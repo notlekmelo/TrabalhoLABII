@@ -5,14 +5,14 @@ public class CCelulaDicionario{
 	public CCelulaDicionario prox;
 	static int indice=0;
 	
-	// Construtora que anula os três atributos da célula   
+	// Construtora que anula os tres atributos da celula
 	public CCelulaDicionario(){    
 		key = null;
 		value = null;
 		prox = null;
 	}
 	
-	// Construtora que inicializa key e value com os argumentos passados  // por parâmetro e anula a referência à próxima célula
+	// Construtora que inicializa key e value com os argumentos passados  // por parametro e anula a referencia e proxima celula
 	public CCelulaDicionario(Object chave, Object valor){ 
 		key = chave;   
 		value = valor;
@@ -20,7 +20,7 @@ public class CCelulaDicionario{
 		indice++;
 	}
 	
-	// Construtora que inicializa todos os atribulos da célula com os argumentos  // passados por parâmetro   
+	// Construtora que inicializa todos os atribulos da celula com os argumentos  // passados por parametro
 	public CCelulaDicionario(Object chave, Object valor, CCelulaDicionario proxima){    
 		key = chave;
 		value = valor;

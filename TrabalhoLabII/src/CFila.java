@@ -88,14 +88,13 @@ public class CFila {
    }
    
    public boolean contemMorador(long cpf) {
-	      boolean achou = false;
-	      CCelula aux = frente.prox;
-	      while (aux != null && !achou) {
-	    	 Morador teste = (Morador)aux.item;
-	         achou = teste.getCpf() == cpf;
-	         aux = aux.prox;
-	      }
-	      return achou;
-	   }
-
+      boolean achou = false;
+      CCelula aux = frente.prox;
+      while (aux != null && !achou) {
+    	 Morador teste = (Morador)aux.item;
+         achou = teste.getCpf() == cpf;
+         aux = aux.prox;
+      }
+      return achou;
+   }
 }
