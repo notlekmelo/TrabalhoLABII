@@ -47,10 +47,9 @@ public class Morador {
 	
 	public Morador(long cpf, String nome, String rua,int numCasa, String cidade, String bairro, String estado, int qtdDep, int tel,
 			float rendaF) {
-		super();
-		if (setCpf(cpf)) {
+		//if (setCpf(cpf)) {
 			this.cpf = cpf;
-		}
+		//}
 		this.nome = nome;
 		this.rua = rua;
 		this.numCasa = numCasa;
@@ -68,36 +67,36 @@ public class Morador {
 				+ ", estado=" + estado + ", tel=" + tel + ", numCasa=" + numCasa + "]";
 	}
 
-	public boolean setCpf(long cpf) {
-		long resto,multresult,nummult,soma=0,dig1,inicial,dig2;
-		boolean certo = false;
-		inicial = cpf/100;
-		nummult = 9;
-		dig2 = cpf%10;
-		dig1 = cpf%100 - dig2;
-		while (cpf>=1){
-			resto=cpf%10;
-			cpf=cpf/10;
-			multresult=resto*nummult;
-			soma=soma+multresult;
-			nummult=nummult-1;
-		}
-		if(dig1 == soma%11) {
-			cpf = (inicial*10)+dig1;
-			nummult=9;
-			soma=0;
-			while (cpf>0){
-				resto=cpf%10;
-				cpf=cpf/10;
-				multresult=resto*nummult;
-				soma=soma+multresult;
-				nummult=nummult-1;
-			}
-			if (dig2 == soma%11) {
-				certo = true;
-			}
-
-		}
-		return certo;
-	}
-	}
+//	public boolean setCpf(long cpf) {
+//		long resto,multresult,nummult,soma=0,dig1,inicial,dig2;
+//		boolean certo = false;
+//		inicial = cpf/100;
+//		nummult = 9;
+//		dig2 = cpf%10;
+//		dig1 = cpf%100 - dig2;
+//		while (cpf>=1){
+//			resto=cpf%10;
+//			cpf=cpf/10;
+//			multresult=resto*nummult;
+//			soma=soma+multresult;
+//			nummult=nummult-1;
+//		}
+//		if(dig1 == soma%11) {
+//			cpf = (inicial*10)+dig1;
+//			nummult=9;
+//			soma=0;
+//			while (cpf>0){
+//				resto=cpf%10;
+//				cpf=cpf/10;
+//				multresult=resto*nummult;
+//				soma=soma+multresult;
+//				nummult=nummult-1;
+//			}
+//			if (dig2 == soma%11) {
+//				certo = true;
+//			}
+//
+//		}
+//		return certo;
+//	}
+}
