@@ -13,7 +13,7 @@ public class Menu {
 		int qntd,numCasa, telefone;
 		float renda;
 
-		System.out.println("--------------------------------------------------------------------------------");
+		System.out.println("|------------------------------------------------------------------------------|");
 		System.out.print("|Digite o nome do morador: ");
 		nome = sc.nextLine();
 		System.out.print("|Digite o cpf do morador(Apenas números): ");
@@ -36,11 +36,11 @@ public class Menu {
 		sc.nextLine();
 		System.out.print("|Digite a sua Cidade: ");
 		cidade = sc.nextLine();
-		System.out.print("|Digite o seu bairro bairro: ");
+		System.out.print("|Digite o seu bairro : ");
 		bairro = sc.nextLine();
 		System.out.print("|Digite o seu estado: ");
 		estado = sc.nextLine();
-		System.out.println("--------------------------------------------------------------------------------");
+		System.out.println("|------------------------------------------------------------------------------|");
 
 		Adiciona(cpf, nome, rua, numCasa, cidade, bairro, estado, qntd, telefone, renda);
 	}
@@ -83,7 +83,6 @@ public class Menu {
 	
 	public static void excluir(long cpf) {
 		int escolha;
-		do {
 			System.out.println("Tem certeza que deseja excluir: ");
 			System.out.println(M1.recebeValor(cpf));
 			System.out.println("/n Digite 1 para sim e 2 para nao");
@@ -105,7 +104,6 @@ public class Menu {
 				System.out.println("pressione alguma tecla para continuar.");
 				sc.nextLine();
 			}
-		} while (escolha != 1 || escolha != 2);
 	}
 
 	public static void Pesquisar(long cpf){
@@ -143,7 +141,7 @@ public class Menu {
 		// TODO Auto-generated method stub
 		int escolha;
 		do {
-			System.out.println("--------------------------------------------------------------------------------");
+			System.out.println("|------------------------------------------------------------------------------|");
 			System.out.println("|  Menu de Opcoes                                                              |");
 			System.out.println("|                                                                              |");
 			System.out.println("| [1] Cadastrar morador                                                        |");
@@ -155,43 +153,47 @@ public class Menu {
 			System.out.println("| [7] Parametros                                                               |");
 			System.out.println("|                                                                              |");
 			System.out.println("| [8] Sair                                                                     |");
-			System.out.println("--------------------------------------------------------------------------------");
+			System.out.println("|------------------------------------------------------------------------------|");
 			escolha = sc.nextInt();
 			sc.nextLine();
 			switch (escolha){
 			case 1:
 				CadastroMorador();
-				System.out.println((Morador)M1.recebeValor(12));
 				break;
 			case 2:
-				sc.nextLine();
 				Listar();
 				break;
 			case 3:
 				System.out.println("escolha 3");
 				break;
 			case 4:
-				System.out.println("Digite o CPF do morador a ser pesquisado");
+				System.out.println("|------------------------------------------------------------------------------|");
+				System.out.println("|Digite o CPF do morador a ser pesquisado                                      |");
 				long cpf = sc.nextLong();
 				sc.nextLine();
+				System.out.println("|------------------------------------------------------------------------------|");
 				Pesquisar(cpf);
 				break;
 			case 5:
-				System.out.println("Digite o CPF do morador a ser excluído");
+				System.out.println("|------------------------------------------------------------------------------|");
+				System.out.println("|Digite o CPF do morador a ser excluído                                        |");
 				cpf = sc.nextLong();
 				sc.nextLine();
+				System.out.println("|------------------------------------------------------------------------------|");
 				excluir(cpf);
 				break;
 			case 6:
 				System.out.println("escolha 6");
 				break;                   
 			case 7:
-				System.out.println("Qual o limite total para as Faixas? ");
+				System.out.println("|------------------------------------------------------------------------------|");
+				System.out.println("|Qual o limite total para as Faixas?                                           |");
 				int m = sc.nextInt();
 				sc.nextLine();
-				System.out.println("Qual o limite da lista de espera? ");
+				System.out.println("|Qual o limite da lista de espera?                                             |");
 				int n = sc.nextInt();
 				sc.nextLine();
+				System.out.println("|------------------------------------------------------------------------------|");
 				Parametros(m,n);
 				break;                  
 			}
@@ -202,13 +204,13 @@ public class Menu {
 	public static void Listar(){
 		int escolha;
 		do {
-			System.out.println("--------------------------------------------------------------------------------");
+			System.out.println("|------------------------------------------------------------------------------|");
 			System.out.println("|  Menu de Listagens                                                           |");
 			System.out.println("|                                                                              |");
 			System.out.println("| [1] Listagem Simples(CPF e Nome)                                             |");
 			System.out.println("| [2] Listagem Completa(todos os dados)                                        |");
 			System.out.println("|                                                                              |");
-			System.out.println("--------------------------------------------------------------------------------");
+			System.out.println("|------------------------------------------------------------------------------|");
 			escolha = sc.nextInt();
 			switch (escolha){
 			case 1:

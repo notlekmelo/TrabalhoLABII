@@ -30,7 +30,7 @@ public class CDicionario {
 			}
 		} 
 		
-		public void exclui(Object chave) {
+		public void exclui(Long chave) {
 			boolean achou = false;   
 			if (primeira != ultima) {  
 				for (CCelulaDicionario aux = primeira; aux != null && !achou; aux = aux.prox) {       
@@ -43,13 +43,13 @@ public class CDicionario {
 			} 
 		}
 		
-		public Object recebeValor(Object chave){   
+		public Object recebeValor(long chave){
 			boolean achou = false;  
 			Object item = null;  
 			if (primeira != ultima) {    
 				for (CCelulaDicionario aux = primeira.prox; aux != null && !achou; aux = aux.prox) {   
-					achou = aux.key.equals(chave);      
-					if (achou)          item = aux.value;  
+					achou = aux.key.equals(chave);
+					if (achou)          item = aux.value;
 				}  
 			}     
 			return item; 
