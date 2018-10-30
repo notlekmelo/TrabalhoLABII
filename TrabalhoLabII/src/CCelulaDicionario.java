@@ -3,7 +3,6 @@ public class CCelulaDicionario{
 	// Atributos  public 
 	Object key, value;  
 	public CCelulaDicionario prox;
-	static int indice=0;
 	
 	// Construtora que anula os tres atributos da celula
 	public CCelulaDicionario(){    
@@ -17,7 +16,6 @@ public class CCelulaDicionario{
 		key = chave;   
 		value = valor;
 		prox = null; 
-		indice++;
 	}
 	
 	// Construtora que inicializa todos os atribulos da celula com os argumentos  // passados por parametro

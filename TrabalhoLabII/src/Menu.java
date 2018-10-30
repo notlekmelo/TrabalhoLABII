@@ -9,12 +9,14 @@ public class Menu {
 
 	public static void CadastroMorador(){
 		String nome, rua, bairro, estado, cidade;
-		int cpf, qntd, renda, numCasa, telefone;
+		long cpf;
+		int qntd,numCasa, telefone;
+		float renda;
 
 		System.out.println("--------------------------------------------------------------------------------");
 		System.out.print("|Digite o nome do morador: ");
 		nome = sc.nextLine();
-		System.out.print("|Digite o cpf do morador(Apenas nÃºmeros): ");
+		System.out.print("|Digite o cpf do morador(Apenas números): ");
 		cpf = sc.nextInt();
 		sc.nextLine();
 		System.out.print("|Digite a quantidade de dependentes : ");
@@ -22,12 +24,12 @@ public class Menu {
 		sc.nextLine();
 		System.out.print("|Digite a renda familiar: ");
 		System.out.print("R$");
-		renda = sc.nextInt();
+		renda = sc.nextFloat();
 		sc.nextLine();
 		System.out.print("|Digite o telefone de contato: ");
 		telefone = sc.nextInt();
 		sc.nextLine();
-		System.out.print("|DIgite sua Rua: ");
+		System.out.print("|Digite sua Rua: ");
 		rua = sc.nextLine();
 		System.out.print("|Digite o numero na rua: ");
 		numCasa = sc.nextInt();
@@ -48,7 +50,7 @@ public class Menu {
 		Morador novo = new Morador(cpf,nome, rua, numCasa, cidade, bairro,estado, qtdDep, tel, rendaF);
 		if(rendaF <= 954.0) {
 			if(qtd <= m) {
-				M1.adiciona(novo, cpf);
+				M1.adiciona(cpf,novo);
 				qtd++;
 			}
 			else {
@@ -61,7 +63,7 @@ public class Menu {
 		else {
 			if(rendaF > 954.0 && rendaF < 2862.0) {
 				if(qtd <= m) {
-					M2.adiciona(novo, cpf);
+					M2.adiciona(cpf,novo);
 					qtd++;
 				}
 				else {
@@ -152,14 +154,14 @@ public class Menu {
 			System.out.println("| [6] Sorteio                                                                  |");
 			System.out.println("| [7] Parametros                                                               |");
 			System.out.println("|                                                                              |");
-			System.out.println("| [0] Sair                                                                     |");
+			System.out.println("| [8] Sair                                                                     |");
 			System.out.println("--------------------------------------------------------------------------------");
 			escolha = sc.nextInt();
+			sc.nextLine();
 			switch (escolha){
 			case 1:
-				// receber todos os parametros e passar para a funcao Adiciona
-				sc.nextLine();
 				CadastroMorador();
+				System.out.println((Morador)M1.recebeValor(12));
 				break;
 			case 2:
 				sc.nextLine();
@@ -169,22 +171,31 @@ public class Menu {
 				System.out.println("escolha 3");
 				break;
 			case 4:
-				// Receber o dado do cpf e enviar para a funcao Pesquisar
-				System.out.println("escolha 4");
+				System.out.println("Digite o CPF do morador a ser pesquisado");
+				long cpf = sc.nextLong();
+				sc.nextLine();
+				Pesquisar(cpf);
 				break;
 			case 5:
-				// receber o cpf e enviar para excluir
-				System.out.println("escolha 5");
+				System.out.println("Digite o CPF do morador a ser excluído");
+				cpf = sc.nextLong();
+				sc.nextLine();
+				excluir(cpf);
 				break;
 			case 6:
 				System.out.println("escolha 6");
 				break;                   
 			case 7:
-				// perguntar o limite total das listas e da fila e enviar para Parametros
-				System.out.println("escolha 7");
+				System.out.println("Qual o limite total para as Faixas? ");
+				int m = sc.nextInt();
+				sc.nextLine();
+				System.out.println("Qual o limite da lista de espera? ");
+				int n = sc.nextInt();
+				sc.nextLine();
+				Parametros(m,n);
 				break;                  
 			}
-		}while(escolha != 0);
+		}while(escolha != 8);
 		sc.close();
 	}
 
