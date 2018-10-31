@@ -61,7 +61,7 @@ public class CDicionario {
 			int escolha = ret.nextInt(indice);
 			CCelulaDicionario aux = primeira.prox;
 			if (primeira != ultima) {    
-				for (int i = 1;i >= escolha ; aux = aux.prox) 
+				for (int i = 1;i <= escolha ; aux = aux.prox) 
 					i++;
 				item = aux.value;
 			}     

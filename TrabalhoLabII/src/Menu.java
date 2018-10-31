@@ -104,7 +104,8 @@ public class Menu {
 				System.out.println("Excluido com sucesso");
 				if(espera.quantidade()>0) {
 					Morador transferido = (Morador)espera.desenfileira();
-					M1.adiciona(transferido.getCpf(),transferido);
+					Adiciona(transferido.getCpf(), transferido.getNome(), transferido.getRua(), transferido.getNumCasa(), transferido.getCidade(),
+							transferido.getBairro(), transferido.getEstado(), transferido.getNumAp(), transferido.getQtdDep(), transferido.getTel(), transferido.getCep(), transferido.getRendaF());
 				}
 				else {
 					qtd--;
@@ -124,7 +125,8 @@ public class Menu {
 				System.out.println("Excluido com sucesso");
 				if(espera.quantidade()>0) {
 					Morador transferido = (Morador)espera.desenfileira();
-					M2.adiciona(transferido.getCpf(),transferido);
+					Adiciona(transferido.getCpf(), transferido.getNome(), transferido.getRua(), transferido.getNumCasa(), transferido.getCidade(),
+							transferido.getBairro(), transferido.getEstado(), transferido.getNumAp(), transferido.getQtdDep(), transferido.getTel(), transferido.getCep(), transferido.getRendaF());
 				}
 				qtd--;
 				break;
