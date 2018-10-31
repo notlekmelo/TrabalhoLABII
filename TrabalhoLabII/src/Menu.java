@@ -263,11 +263,26 @@ public class Menu {
 			escolha = sc.nextInt();
 			switch (escolha){
 			case 1:
+				System.out.println("|------------------------------------------------------|");
+				System.out.println("|LISTAGEM DE MORADORES (PAGINA 1)                      |");
+				System.out.println("|================================                      |");
+				System.out.println("|FAIXA 1                                               |");
 				M1.mostraSimples();
+				System.out.println("|FAIXA 2                                               |");
+				M2.mostraSimples();
+				System.out.println("|------------------------------------------------------|");
 				escolha = 0;
 				break;
 			case 2:
+				System.out.println("|------------------------------------------------------|");
+				System.out.println("|LISTAGEM DE MORADORES (PAGINA 1)                      |");
+				System.out.println("|================================                      |");
+				System.out.println("|FAIXA 1                                               |");
 				M1.mostraCompleto();
+				System.out.println("|FAIXA 2                                               |");
+
+				M2.mostraCompleto();
+				System.out.println("|------------------------------------------------------|");
 				escolha = 0;
 				break;
 			}

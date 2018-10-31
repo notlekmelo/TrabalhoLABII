@@ -68,28 +68,24 @@ public class CDicionario {
 			return item;
 		}
 
-	public void mostraSimples() {
+		public void mostraSimples() {
 		int i = 0;
-		Object valor = 0;
 		for (CCelulaDicionario c = primeira.prox; c != null; c = c.prox) {
 			if (primeira != ultima){
 				if (i < 20){
 					System.out.print(((Morador)c.value).ListagemSimples());
-					valor = c.prox;
 					i++;
 				}
 			}
 		}
 	}
 
-	public void mostraCompleto() {
+		public void mostraCompleto() {
 		int i = 0;
-		Object valor = 0;
 		for (CCelulaDicionario c = primeira.prox; c != null; c = c.prox) {
 			if (primeira != ultima){
 				if (i < 3){
-					System.out.print(c.value);
-					valor = c.prox;
+					System.out.println(c.value);
 					i++;
 				}
 			}
