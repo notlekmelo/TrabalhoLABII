@@ -85,9 +85,11 @@ public class Menu {
 	}
 	
 	public static void excluir(long cpf) {
+		System.out.println("Tem certeza que deseja excluir: ");
+		int faixa = Pesquisar(cpf);
+		switch(faixa) {
+		case 1:
 		int escolha;
-			System.out.println("Tem certeza que deseja excluir: ");
-			System.out.println(M1.recebeValor(cpf));
 			System.out.println("/n Digite 1 para sim e 2 para nao");
 			escolha = sc.nextInt();
 			switch(escolha) {
@@ -106,11 +108,36 @@ public class Menu {
 				System.out.println("Cancelando...");
 				System.out.println("pressione alguma tecla para continuar.");
 				sc.nextLine();
+				break;
 			}
+			break;
+		case 2:
+				System.out.println("/n Digite 1 para sim e 2 para nao");
+				escolha = sc.nextInt();
+				switch(escolha) {
+				case 1:
+					M2.exclui(cpf);
+					System.out.println("Excluido com sucesso");
+					if(espera.quantidade()>0) {
+						Morador transferido = (Morador)espera.desenfileira();
+						M2.adiciona(transferido.getCpf(),transferido);
+					}
+						qtd--;
+					break;
+				case 2:
+					System.out.println("Cancelando...");
+					System.out.println("pressione alguma tecla para continuar.");
+					sc.nextLine();
+					break;
+				}
+				break;
+			}
+
 	}
 
-	public static void Pesquisar(long cpf){
+	public static int Pesquisar(long cpf){
 		Morador pesquisado = (Morador)M1.recebeValor(cpf);
+		int faixa=0;
 		if (pesquisado.equals(null)){
 			pesquisado = (Morador)M2.recebeValor(cpf);
 			if (pesquisado.equals(null)){
@@ -119,10 +146,13 @@ public class Menu {
 				else
 					System.out.println("O morador nao esta na lista de espera.");
 			}
+			else faixa = 2;
 		}
+		else faixa = 1;
 		if (!pesquisado.equals(null)){
 			System.out.println(pesquisado + "Renda Familiar: " + pesquisado.getRendaF() + " Dependentes: " + pesquisado.getQtdDep());
 		}
+		return faixa;
 	}
 
 	public static void Sorteio() {
@@ -133,10 +163,10 @@ public class Menu {
 		int esc2 = sc.nextInt();
 		sc.nextLine();
 		System.out.println("LISTAGEM DE MORADORES sorteados \n ================================ \n FAIXA 1");
-		for(int i = 1; i>= esc1; i++)
+		for(int i = 0; i< esc1; i++)
 			System.out.println(M1.retornaQualquer());
 		System.out.println("LISTAGEM DE MORADORES sorteados \n ================================ \n FAIXA 2");
-		for(int i = 1; i>= esc2; i++)
+		for(int i = 0; i< esc2; i++)
 			System.out.println(M2.retornaQualquer());
 	}
 	
@@ -186,7 +216,7 @@ public class Menu {
 				excluir(cpf);
 				break;
 			case 6:
-				System.out.println("escolha 6");
+				Sorteio();
 				break;                   
 			case 7:
 				System.out.println("|------------------------------------------------------------------------------|");

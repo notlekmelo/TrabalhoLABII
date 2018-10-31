@@ -74,7 +74,7 @@ public class Morador {
 
 	@Override
 	public String toString() {
-		return "CPF " + cpf + " Nome " + nome + "\nQtde. Dependentes " + qtdDep + " - Renda Familiar " + rendaF + " \nTelefone : " + tel + "\nRua " + rua + " "  + numCasa + ", AP " + numAp + " Bairro: " + bairro + "\nCodade: " + cidade + " Estado: " + estado +" CEP: " + numCep + "\n";
+		return "CPF " + cpf + " Nome " + nome + "\nQtde. Dependentes " + qtdDep + " - Renda Familiar " + rendaF + " \nTelefone : " + tel + "\nRua " + rua + " "  + numCasa + ", AP " + numAp + " Bairro: " + bairro + "\nCidade: " + cidade + " Estado: " + estado +" CEP: " + numCep + "\n";
 	}
 
 	public String ListagemSimples() {
