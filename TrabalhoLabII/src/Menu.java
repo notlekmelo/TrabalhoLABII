@@ -47,6 +47,7 @@ public class Menu {
 		System.out.println("|------------------------------------------------------------------------------|");
 
 		Adiciona(cpf, nome, rua, numCasa, cidade, bairro, estado, numAp, qntd, telefone, cep, renda);
+		jump();
 	}
 
 	public static void Adiciona(long cpf, String nome, String rua, int numCasa, String cidade, String bairro, String estado, int numAp, int qtdDep, String tel, String cep, float rendaF){
@@ -77,19 +78,24 @@ public class Menu {
 				}
 			}
 		}
+		System.out.println("Pressione alguma tecla para continuar.");
+		sc.nextLine();
 	}
-	
+
 	public static void Parametros(int lista, int fila) {
 		m = lista;
 		n = fila + lista;
+		System.out.println("Pressione alguma tecla para continuar.");
+		sc.nextLine();
+		jump();
 	}
-	
+
 	public static void excluir(long cpf) {
 		System.out.println("Tem certeza que deseja excluir: ");
 		int faixa = Pesquisar(cpf);
 		switch(faixa) {
 		case 1:
-		int escolha;
+			int escolha;
 			System.out.println("/n Digite 1 para sim e 2 para nao");
 			escolha = sc.nextInt();
 			switch(escolha) {
@@ -106,33 +112,31 @@ public class Menu {
 				break;
 			case 2:
 				System.out.println("Cancelando...");
-				System.out.println("pressione alguma tecla para continuar.");
-				sc.nextLine();
 				break;
 			}
 			break;
 		case 2:
-				System.out.println("/n Digite 1 para sim e 2 para nao");
-				escolha = sc.nextInt();
-				switch(escolha) {
-				case 1:
-					M2.exclui(cpf);
-					System.out.println("Excluido com sucesso");
-					if(espera.quantidade()>0) {
-						Morador transferido = (Morador)espera.desenfileira();
-						M2.adiciona(transferido.getCpf(),transferido);
-					}
-						qtd--;
-					break;
-				case 2:
-					System.out.println("Cancelando...");
-					System.out.println("pressione alguma tecla para continuar.");
-					sc.nextLine();
-					break;
+			System.out.println("/n Digite 1 para sim e 2 para nao");
+			escolha = sc.nextInt();
+			switch(escolha) {
+			case 1:
+				M2.exclui(cpf);
+				System.out.println("Excluido com sucesso");
+				if(espera.quantidade()>0) {
+					Morador transferido = (Morador)espera.desenfileira();
+					M2.adiciona(transferido.getCpf(),transferido);
 				}
+				qtd--;
+				break;
+			case 2:
+				System.out.println("Cancelando...");
 				break;
 			}
-
+			break;
+		}
+		System.out.println("Pressione alguma tecla para continuar.");
+		sc.nextLine();
+		jump();
 	}
 
 	public static int Pesquisar(long cpf){
@@ -168,8 +172,11 @@ public class Menu {
 		System.out.println("LISTAGEM DE MORADORES sorteados \n ================================ \n FAIXA 2");
 		for(int i = 0; i< esc2; i++)
 			System.out.println(M2.retornaQualquer());
+		System.out.println("Pressione alguma tecla para continuar.");
+		sc.nextLine();
+		jump();
 	}
-	
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int escolha;
@@ -191,15 +198,19 @@ public class Menu {
 			sc.nextLine();
 			switch (escolha){
 			case 1:
+				jump();
 				CadastroMorador();
 				break;
 			case 2:
+				jump();
 				Listar();
 				break;
 			case 3:
+				jump();
 				espera.mostra();
 				break;
 			case 4:
+				jump();
 				System.out.println("|------------------------------------------------------------------------------|");
 				System.out.print("|Digite o CPF do morador a ser pesquisado: ");
 				long cpf = sc.nextLong();
@@ -208,6 +219,7 @@ public class Menu {
 				Pesquisar(cpf);
 				break;
 			case 5:
+				jump();
 				System.out.println("|------------------------------------------------------------------------------|");
 				System.out.print("|Digite o CPF do morador a ser excluído: ");
 				cpf = sc.nextLong();
@@ -216,9 +228,11 @@ public class Menu {
 				excluir(cpf);
 				break;
 			case 6:
+				jump();
 				Sorteio();
 				break;                   
 			case 7:
+				jump();
 				System.out.println("|------------------------------------------------------------------------------|");
 				System.out.print("|Qual o limite total para as Faixas?: ");
 				int m = sc.nextInt();
@@ -256,6 +270,9 @@ public class Menu {
 				break;
 			}
 		}while(escolha != 0);
+		System.out.println("Pressione alguma tecla para continuar.");
+		sc.nextLine();
+		jump();
 	}
 
 	private static void jump() {
