@@ -17,7 +17,7 @@ public class Menu {
 		System.out.print("|Digite o nome do morador: ");
 		nome = sc.nextLine();
 		System.out.print("|Digite o cpf do morador(Apenas números): ");
-		cpf = sc.nextInt();
+		cpf = sc.nextLong();
 		sc.nextLine();
 		System.out.print("|Digite a quantidade de dependentes : ");
 		qntd = sc.nextInt();
@@ -30,10 +30,10 @@ public class Menu {
 		telefone = sc.nextLine();
 		System.out.print("|Digite sua Rua: ");
 		rua = sc.nextLine();
-		System.out.print("|Digite o numero na rua: ");
+		System.out.print("|Digite o número na rua: ");
 		numCasa = sc.nextInt();
 		sc.nextLine();
-		System.out.print("|Digite o numero do apartamento: ");
+		System.out.print("|Digite o número do apartamento: ");
 		numAp = sc.nextInt();
 		sc.nextLine();
 		System.out.print("|Digite a sua Cidade: ");
@@ -77,6 +77,7 @@ public class Menu {
 					}
 				}
 			}
+			else System.out.println("Morador com renda familiar muito elevada.");
 		}
 		System.out.println("Pressione  Enter para continuar.");
 		sc.nextLine();
@@ -101,7 +102,6 @@ public class Menu {
 			switch(escolha) {
 			case 1:
 				M1.exclui(cpf);
-				System.out.println("Excluido com sucesso");
 				qtd--;
 				if(espera.quantidade()>0) {
 					Morador transferido = (Morador)espera.desenfileira();
@@ -144,19 +144,19 @@ public class Menu {
 	public static int Pesquisar(long cpf){
 		Morador pesquisado = (Morador)M1.recebeValor(cpf);
 		int faixa=0;
-		if (pesquisado.equals(null)){
+		if (pesquisado == null){
 			pesquisado = (Morador)M2.recebeValor(cpf);
-			if (pesquisado.equals(null)){
+			if (pesquisado==null){
 				if(espera.contemMorador(cpf))
-					System.out.println("O morador pesquisado esta na lista de espera.");
+					System.out.println("O morador pesquisado está na lista de espera.");
 				else
-					System.out.println("O morador nao esta na lista de espera.");
+					System.out.println("O morador não está na lista de espera.");
 			}
 			else faixa = 2;
 		}
 		else faixa = 1;
-		if (!pesquisado.equals(null)){
-			System.out.println(pesquisado + "Renda Familiar: " + pesquisado.getRendaF() + " Dependentes: " + pesquisado.getQtdDep());
+		if (pesquisado != null){
+			System.out.println(pesquisado);
 		}
 		return faixa;
 	}
