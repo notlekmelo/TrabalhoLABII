@@ -5,7 +5,7 @@ public class Menu {
 	static CDicionario M1 = new CDicionario();
 	static CDicionario M2 = new CDicionario();
 	static CFila espera = new CFila();
-	static int m,n, qtd=1;
+	static int m,n, qtd=0;
 
 	public static void CadastroMorador(){
 		String nome, rua, bairro, estado, cidade, telefone, cep;
@@ -45,20 +45,19 @@ public class Menu {
 		System.out.print("|Digite o seu CEP: ");
 		cep = sc.nextLine();
 		System.out.println("|------------------------------------------------------------------------------|");
-
 		Adiciona(cpf, nome, rua, numCasa, cidade, bairro, estado, numAp, qntd, telefone, cep, renda);
 		jump();
 	}
 
 	public static void Adiciona(long cpf, String nome, String rua, int numCasa, String cidade, String bairro, String estado, int numAp, int qtdDep, String tel, String cep, float rendaF){
-		Morador novo = new Morador(cpf, nome, rua, numCasa, cidade, bairro, estado, numAp, qtdDep, tel, cep, rendaF);
 		if(rendaF <= 954.0) {
-			if(qtd <= m) {
+			Morador novo = new Morador(cpf, nome, rua, numCasa, cidade, bairro, estado, numAp, qtdDep, tel, cep, rendaF, 1);
+			if(qtd < m) {
 				M1.adiciona(cpf,novo);
 				qtd++;
 			}
 			else {
-				if(qtd>m && qtd <=n){
+				if(qtd>(m-1) && qtd < n){
 					espera.enfileira(novo);
 					qtd++;
 				}
@@ -66,26 +65,27 @@ public class Menu {
 		}
 		else {
 			if(rendaF > 954.0 && rendaF < 2862.0) {
-				if(qtd <= m) {
+				Morador novo = new Morador(cpf, nome, rua, numCasa, cidade, bairro, estado, numAp, qtdDep, tel, cep, rendaF,2);
+				if(qtd < m) {
 					M2.adiciona(cpf,novo);
 					qtd++;
 				}
 				else {
-					if(qtd>m && qtd <=n){
+					if(qtd>(m-1) && qtd < n){
 						espera.enfileira(novo);
 						qtd++;
 					}
 				}
 			}
 		}
-		System.out.println("Pressione alguma tecla para continuar.");
+		System.out.println("Pressione  Enter para continuar.");
 		sc.nextLine();
 	}
 
 	public static void Parametros(int lista, int fila) {
 		m = lista;
 		n = fila + lista;
-		System.out.println("Pressione alguma tecla para continuar.");
+		System.out.println("Pressione  Enter para continuar.");
 		sc.nextLine();
 		jump();
 	}
@@ -96,19 +96,18 @@ public class Menu {
 		switch(faixa) {
 		case 1:
 			int escolha;
-			System.out.println("/n Digite 1 para sim e 2 para nao");
+			System.out.println("\n Digite 1 para sim e 2 para nao");
 			escolha = sc.nextInt();
 			switch(escolha) {
 			case 1:
 				M1.exclui(cpf);
 				System.out.println("Excluido com sucesso");
+				qtd--;
 				if(espera.quantidade()>0) {
 					Morador transferido = (Morador)espera.desenfileira();
-					Adiciona(transferido.getCpf(), transferido.getNome(), transferido.getRua(), transferido.getNumCasa(), transferido.getCidade(),
-							transferido.getBairro(), transferido.getEstado(), transferido.getNumAp(), transferido.getQtdDep(), transferido.getTel(), transferido.getCep(), transferido.getRendaF());
-				}
-				else {
-					qtd--;
+					if(transferido.getFaixa() == 1)
+						M1.adiciona(transferido.getCep(), transferido);
+					else M2.adiciona(transferido.getFaixa(), transferido);
 				}
 				break;
 			case 2:
@@ -117,18 +116,19 @@ public class Menu {
 			}
 			break;
 		case 2:
-			System.out.println("/n Digite 1 para sim e 2 para nao");
+			System.out.println("\n Digite 1 para sim e 2 para nao");
 			escolha = sc.nextInt();
 			switch(escolha) {
 			case 1:
 				M2.exclui(cpf);
 				System.out.println("Excluido com sucesso");
+				qtd--;
 				if(espera.quantidade()>0) {
 					Morador transferido = (Morador)espera.desenfileira();
-					Adiciona(transferido.getCpf(), transferido.getNome(), transferido.getRua(), transferido.getNumCasa(), transferido.getCidade(),
-							transferido.getBairro(), transferido.getEstado(), transferido.getNumAp(), transferido.getQtdDep(), transferido.getTel(), transferido.getCep(), transferido.getRendaF());
+					if(transferido.getFaixa() == 1)
+						M1.adiciona(transferido.getCep(), transferido);
+					else M2.adiciona(transferido.getFaixa(), transferido);
 				}
-				qtd--;
 				break;
 			case 2:
 				System.out.println("Cancelando...");
@@ -136,7 +136,7 @@ public class Menu {
 			}
 			break;
 		}
-		System.out.println("Pressione alguma tecla para continuar.");
+		System.out.println("Pressione  Enter para continuar.");
 		sc.nextLine();
 		jump();
 	}
@@ -174,7 +174,7 @@ public class Menu {
 		System.out.println("LISTAGEM DE MORADORES sorteados \n ================================ \n FAIXA 2");
 		for(int i = 0; i< esc2; i++)
 			System.out.println(M2.retornaQualquer());
-		System.out.println("Pressione alguma tecla para continuar.");
+		System.out.println("Pressione  Enter para continuar.");
 		sc.nextLine();
 		jump();
 	}
@@ -279,7 +279,7 @@ public class Menu {
 				System.out.println("|================================                      |");
 				System.out.println("|FAIXA 1                                               |");
 				M1.mostraCompleto();
-				System.out.println("|FAIXA 2                                               |");
+				System.out.println("\n|FAIXA 2                                               |");
 
 				M2.mostraCompleto();
 				System.out.println("|------------------------------------------------------|");
@@ -287,7 +287,7 @@ public class Menu {
 				break;
 			}
 		}while(escolha != 0);
-		System.out.println("Pressione alguma tecla para continuar.");
+		System.out.println("Pressione  Enter para continuar.");
 		sc.nextLine();
 		jump();
 	}

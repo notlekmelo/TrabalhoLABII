@@ -2,7 +2,7 @@ public class Morador {
 
 	private long cpf;
 	private String nome, rua, cidade, bairro, estado, numCep, tel;
-	private int  qtdDep, numCasa, numAp;
+	private int  qtdDep, numCasa, numAp, faixa;
 	private float rendaF;
 	
 	public long getCpf() {
@@ -54,7 +54,7 @@ public class Morador {
 	}
 	
 	public Morador(long cpf, String nome, String rua, int numCasa, String cidade, String bairro, String estado, int numAp, int qtdDep, String tel, String numCep,
-				   float rendaF) {
+				   float rendaF,int faixa) {
 		//if (setCpf(cpf)) {
 			this.cpf = cpf;
 		//}
@@ -70,6 +70,19 @@ public class Morador {
 		this.numCasa = numCasa;
 		this.numCep = numCep;
 		this.rendaF = rendaF;
+		this.faixa = faixa;
+	}
+
+	public String getNumCep() {
+		return numCep;
+	}
+
+	public void setNumCep(String numCep) {
+		this.numCep = numCep;
+	}
+
+	public int getFaixa() {
+		return faixa;
 	}
 
 	@Override
